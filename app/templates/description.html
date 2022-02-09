@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} Edit item {% endblock %}
+{% block header %} Edit {% endblock %}
+{% block content %}
+<div class="list-group">
+    <form action="/submit/{{ item.id }}" method="post">
+        {{ form.hidden_tag() }}
+        <!-- add title -->
+        <div class="sub-headline">
+            <i class="bi bi-bookmark-check"></i>
+            <label> Add a title</label>
+            {{form.title(type="text", class="form-control", placeholder="Input title (Can't be blank! Within 50 characters)...", required="required", maxlength="50", value=form.title.data)}}
+        </div>
+        <br>
+        <!-- add okr target -->
+        <div class="sub-headline">
+            <i class="bi bi-app-indicator"></i>
+            <label> Add a mini OKR</label><br>
+            <small> (e.g. Assume you want to read a 100-page book in 10 days. Set the total to 100 and the step to 10. Every time you click the complete button, the total amount is subtracted by ten. The button would be marked as completed until the total amount reached zero.)
+            </small>
+            <br>
+            <!-- Limit input range 0-9 -->
+            <small> Set a total amount </small>
+            {{form.total(type="text", oninput="this.value = this.value.replace(/[^0-9]/g, '');", class="form-control", value="{{form.total.data}}", placeholder="Input total (greater or equal to 1)...", required="required", value=form.total.data)}}
+            <small> Set a step</small>
+            {{form.step(type="text", oninput="this.value = this.value.replace(/[^0-9]/g, '');", class="form-control", value="{{form.step.data}}", placeholder="Input step (greater or equal to 1)...", required="required", value=form.step.data)}}
+        </div>
+        <br>
+        <!-- add deadline -->
+        <div class="sub-headline">
+            <i class="bi bi-calendar-date"></i>
+            <label> Add a deadline</label>
+            {{form.date(type="date", class="form-control", value=form.date.data)}}
+        </div>
+        <br>
+        <!-- add module code -->
+        <div class="sub-headline">
+            <i class="bi bi-code-slash"></i>
+            <label> Add a module code</label>
+            {{form.code(type="text", class="form-control", placeholder="Input module code (within 50 characters)...", maxlength="50", value=form.code.data)}}
+        </div>
+        <br>
+        <div class="form-group sub-headline">
+            <i class="bi bi-text-left"></i>
+            <label> Description</label>
+            {{form.dcp(class="form-control", rows="5", placeholder="Input description of assessment (within 500 characters)...", maxlength="500")}}
+        </div>
+        <div>
+            <a class="btn btn-danger btn-wide" href="/rtn">Cancel</a>
+            <button type="submit" class="btn btn-primary btn-wide">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

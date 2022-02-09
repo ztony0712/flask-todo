@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Futara";
+}
+
+body {
+    min-height: 100vh;
+    background: url(../images/bg.png)no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.widget {
+    font-size: 1.375em;
+    color: black;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.container-style {
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+
+    padding: 40px;
+    margin-bottom: 50px;
+    margin-top: 25px;
+}
+
+.headline {
+    font-size: 50px;
+    color: white;
+}
+
+.sub-headline {
+    font-size: 20px;
+    color: white;
+}
+
+.btn-wide {
+    width: 75px;
+}
